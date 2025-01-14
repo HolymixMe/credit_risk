@@ -41,4 +41,4 @@ Hasil evaluasi:
 
 Random Forest menunjukkan kinerja superior dan direkomendasikan sebagai model terbaik.  
 
-## Repository Structure  
+pip install -r requirements.txt
