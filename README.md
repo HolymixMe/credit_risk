@@ -1,7 +1,8 @@
 # Credit Risk Prediction  
 
 ## Project Overview  
-Proyek ini bertujuan untuk meningkatkan akurasi penilaian dan pengelolaan risiko kredit menggunakan model machine learning. Dengan memanfaatkan data pinjaman historis, dua algoritma utama, yaitu Logistic Regression dan Random Forest, dikembangkan untuk memprediksi risiko kredit. Hasil analisis ini diharapkan dapat membantu perusahaan multifinance dalam mengoptimalkan keputusan bisnis dan meminimalkan potensi kerugian.  
+Proyek ini bertujuan untuk meningkatkan akurasi penilaian dan pengelolaan risiko kredit menggunakan model machine learning. Dengan memanfaatkan data pinjaman historis, dua algoritma utama, yaitu Logistic Regression dan Random Forest, dikembangkan untuk memprediksi risiko kredit.  
+Teknik **SMOTE (Synthetic Minority Oversampling Technique)** digunakan untuk menangani data tidak seimbang, sementara **hyperparameter tuning** dilakukan untuk mengoptimalkan performa model.  
 
 ## Dataset  
 Dataset yang digunakan diambil dari Rakamin LMS, terdiri dari:  
@@ -18,6 +19,7 @@ Dataset yang digunakan diambil dari Rakamin LMS, terdiri dari:
 - Dilakukan penghapusan fitur yang tidak relevan, seperti fitur dengan seluruh nilainya kosong atau informasi unik seperti `id` dan `url`.  
 - Nilai kosong diisi menggunakan metode seperti imputasi rata-rata atau modus.  
 - Fitur kategorik diubah menjadi bentuk numerik menggunakan teknik seperti one-hot encoding.  
+- Data tidak seimbang pada target `loan_status` ditangani menggunakan **SMOTE** untuk memastikan model tidak bias terhadap kelas mayoritas.  
 
 ### 3. Exploratory Data Analysis (EDA)  
 - Distribusi target `loan_status` dianalisis untuk memahami proporsi data positif dan negatif.  
@@ -28,18 +30,17 @@ Model yang digunakan adalah:
 - **Logistic Regression**: Digunakan sebagai baseline karena interpretabilitasnya.  
 - **Random Forest**: Dipilih karena kemampuannya menangkap pola data yang kompleks.  
 
+#### Hyperparameter Tuning  
+- Proses tuning dilakukan menggunakan **RandomizedSearchCV** untuk mengoptimalkan hyperparameter seperti jumlah estimator dan kedalaman pohon pada Random Forest.  
+
 ### 5. Model Evaluation  
 Model dievaluasi menggunakan metrik:  
 - **Accuracy**: Mengukur persentase prediksi yang benar.  
 - **Precision**: Mengukur ketepatan prediksi positif.  
 - **Recall**: Mengukur kemampuan model mengidentifikasi data positif.  
-- **F1-Score**: Mengombinasikan precision dan recall.  
+- **F1-Score**: Kombinasi precision dan recall untuk evaluasi keseluruhan.  
 
-Hasil evaluasi:  
-- Logistic Regression: Accuracy 83.39%, F1-Score 83.38%  
-- Random Forest: Accuracy 98.11%, F1-Score 98.11%  
-
-Random Forest menunjukkan kinerja superior dan direkomendasikan sebagai model terbaik.  
+Hasil evaluasi menunjukkan bahwa Random Forest dengan tuning hyperparameter memberikan hasil terbaik dengan akurasi lebih dari 98%, sementara Logistic Regression mencapai akurasi 83%.  
 
 ## Setup Environment 
 ```
